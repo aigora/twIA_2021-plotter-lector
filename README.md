@@ -5,7 +5,7 @@ Se va a crear un plotter para poder imprimir distintos tipos de información y p
 Enrique García Torija -@Engarto <br/>
 Diana Perucho Barichevskaia<br/>
 Rubén García Ladrón<br/>
-Irene (Completar)<br/>
+Qingyun Xu-@Qingyun-Xu<br/>
 Claudia (Completar)<br/>
 
 ## Objetivos del trabajo
