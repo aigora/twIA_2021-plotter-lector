@@ -6,7 +6,7 @@ Enrique García Torija -@Engarto <br/>
 Diana Perucho Barichevskaia<br/>
 Rubén García Ladrón<br/>
 Qingyun Xu-@Qingyun-Xu<br/>
-Claudia (Completar)<br/>
+Claudia Sánchez Massa -@Claudia1130<br/>
 
 ## Objetivos del trabajo
 Transformar información en una forma más sencilla para facilitar su representación<br/>
