@@ -3,7 +3,7 @@ Se va a crear un plotter para poder imprimir distintos tipos de información y p
 
 ## Integrantes del equipo
 Enrique García Torija -@Engarto <br/>
-Diana Perucho Barichevskaia<br/>
+Diana Perucho Barichevskaia -@Dianaperucho<br/>
 Rubén García Ladrón<br/>
 Qingyun Xu-@Qingyun-Xu<br/>
 Claudia Sánchez Massa -@Claudia1130<br/>
