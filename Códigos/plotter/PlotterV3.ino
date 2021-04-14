@@ -1,3 +1,4 @@
+//[TRABAJO EN PROGRESO NO FINALIZADO]
 //a esta fecha Hace homing inicial y se mueve al recibir comandos
 // de la forma XX,XX,A, donde XX son los pasos a mover, el carro y el papel,
 //respectivamente y a es 1 o 0, 0 no pinta, 1 sí
