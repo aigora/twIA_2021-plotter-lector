@@ -38,7 +38,16 @@ void setup()
   pinMode(motor2[2], OUTPUT);
   pinMode(motor2[3], OUTPUT);
 
-
+  lapiz.write(45);
+  for(int i= 0; i< 500;i++)
+  {
+    anticlockwise(motor2);
+    delay(3);
+  }
+  digitalWrite(motor2[0], bitRead(off[1], 0));
+  digitalWrite(motor2[1], bitRead(off[1], 0));
+  digitalWrite(motor2[2], bitRead(off[1], 0));
+  digitalWrite(motor2[3], bitRead(off[1], 0));
   while (digitalRead(StopButtonPin) == HIGH) // que se hacerque al home
   {
     anticlockwise(motor);
@@ -67,7 +76,7 @@ void loop()
     Serial.read(); //next character is comma, so skip it using this
     String second = Serial.readStringUntil(',');
     Serial.read();
-    String third  = Serial.readStringUntil('\0');
+    String third  = Serial.readStringUntil(',');
     int st1 = first.toInt();
     int st2 = second.toInt();
     int servo = third.toInt();
