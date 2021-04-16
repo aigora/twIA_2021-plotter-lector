@@ -19,3 +19,4 @@ Decodificar la información leída por el lector <br/>
 - *[Lista de objetivos](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Lista-de-objetivos)*
 - *[Datos de entrada](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Datos-de-entrada)*
 - *[Datos de salida](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Datos-de-salida)*
+- *[Diagramas](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Diagramas)*
