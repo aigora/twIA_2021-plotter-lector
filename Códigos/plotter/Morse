@@ -182,7 +182,7 @@ int main(int argc, char* argv[])
 using namespace std;
 
 
-int main()
+int main(int argc, char* argv[])
 {
     char opcion= ' ';
 	int opcion2 = 0;
@@ -231,114 +231,121 @@ int i, j;
 
 
     case 2://morse a español
+{
+    char Morse[48][7];
+    char Simbolos[48];
+    char FraseMorse[200];
+    char FraseNormal[200];
+    
+    int contador;
+    int encontrado;
+    int contadorfrasenormal = 0;
+    char CopiaFraseMorse[200];
+    char* Puntero;
+    char Delimitador[5] = " ";
+   
+    strcpy(Morse[0], ".-"); // A
+    Simbolos[0] = 'A';
+    strcpy(Morse[1], "-..."); // B
+    Simbolos[1] = 'B';
+    strcpy(Morse[2], "-.-."); // C
+    Simbolos[2] = 'C';
+    strcpy(Morse[3], "-.."); // D
+    Simbolos[3] = 'D';
+    strcpy(Morse[4], "."); // E
+    Simbolos[4] = 'E';
+    strcpy(Morse[5], "..-."); // F
+    Simbolos[5] = 'A';
+    strcpy(Morse[6], "--."); // G
+    Simbolos[6] = 'G';
+    strcpy(Morse[7], "...."); // H
+    Simbolos[7] = 'H';
+    strcpy(Morse[8], ".."); // I
+    Simbolos[8] = 'I';
+    strcpy(Morse[9], ".---"); // J
+    Simbolos[9] = 'J';
+    strcpy(Morse[10], "-.-"); // K
+    Simbolos[10] = 'K';
+    strcpy(Morse[11], ".-.."); // L
+    Simbolos[11] = 'L';
+    strcpy(Morse[12], "--"); // M
+    Simbolos[12] = 'M';
+    strcpy(Morse[13], "-."); // N
+    Simbolos[13] = 'N';
+    strcpy(Morse[14], "---"); // O
+    Simbolos[14] = 'O';
+    strcpy(Morse[15], ".--."); // P
+    Simbolos[15] = 'P';
+    strcpy(Morse[16], "--.-"); // Q
+    Simbolos[16] = 'Q';
+    strcpy(Morse[17], ".-."); // R
+    Simbolos[17] = 'R';
+    strcpy(Morse[18], "..."); // S
+    Simbolos[18] = 'S';
+    strcpy(Morse[19], "-"); // T
+    Simbolos[19] = 'T';
+    strcpy(Morse[20], "..-"); // U
+    Simbolos[20] = 'U';
+    strcpy(Morse[21], "...-"); // V
+    Simbolos[21] = 'V';
+    strcpy(Morse[22], ".--"); // W
+    Simbolos[22] = 'W';
+    strcpy(Morse[23], "-..-"); // X
+    Simbolos[23] = 'X';
+    strcpy(Morse[24], "-.--"); // Y
+    Simbolos[24] = 'Y';
+    strcpy(Morse[25], "--.."); // Z
+    Simbolos[25] = 'Z';
+    strcpy(Morse[30], "-----"); // 0
+    Simbolos[30] = '0';
+    strcpy(Morse[31], ".----"); // 1
+    Simbolos[31] = '1';
+    strcpy(Morse[32], "..---"); // 2
+    Simbolos[32] = '2';
+    strcpy(Morse[33], "...--"); // 3
+    Simbolos[33] = '3';
+    strcpy(Morse[34], "....-"); // 4
+    Simbolos[34] = '4';
+    strcpy(Morse[35], "....."); // 5
+    Simbolos[35] = '5';
+    strcpy(Morse[36], "-...."); // 6
+    Simbolos[36] = '6';
+    strcpy(Morse[37], "--..."); // 7
+    Simbolos[37] = '7';
+    strcpy(Morse[38], "---.."); // 8
+    Simbolos[38] = '8';
+    strcpy(Morse[39], "----."); // 9
+    Simbolos[39] = '9';
+    
+    printf("\nFrase en morse:");
+    gets_s(FraseMorse);
+   
+    strcpy(CopiaFraseMorse, FraseMorse);
+    printf("\nFrase a analizar: %s", CopiaFraseMorse);
+   
+    contadorfrasenormal = 0;
+    printf("\ndescomposición de la cadena en trozos\n");
+    
+    Puntero = strtok(CopiaFraseMorse, Delimitador);
+    
+    while (Puntero != NULL) {
+        printf("\n%s", Puntero);
+        contador = 0;
+        encontrado = 0;
+        while (contador < 48 && encontrado != 1) 
+        {
+            if (strcmp(Puntero, Morse[contador++]) == 0) encontrado = 1;
+        }
 
-	{
-		std::cout << "\t-----------CODIGO MORSE------------\n\n";
-		std::cout << "\t____________________________________\n";
-		std::cout << "\t|A .-   |B -...  |C -.-.  |D -..   |\n";
-		std::cout << "\t|E .    |F ..-.  |G --.   |H ....  |\n";
-		std::cout << "\t|I ..   |J .---  |K -.-   |L .-..  |\n";
-		std::cout << "\t|M --   |N -.    |O ---   |P .--.  |\n";
-		std::cout << "\t|Q --.- |R .-.   |S ...   |T -     |\n";
-		std::cout << "\t|U ..-  |V ...-  |W .--   |X -..-  |\n";
-		std::cout << "\t|Y -.-- |Z --..  |0 ----- |1 .---- |\n";
-		std::cout << "\t|2 ..---|3 ...-- |4 ....- |5 ..... |\n";
-		std::cout << "\t|6 -....|7 --... |8 ---.. |9 ----. |\n";
-
-
-		{
-			string String = "";
-			Menu();
-			Insertar(String);
-			Morse(String);
-			std::cin.get();
-			return 0;
-		}
-
-		void Insertar(string & String) {
-			std::cout << "\nIngresa el codigo: ";
-			getline(cin, String);
-		}
-		void Morse(string String) {
-			string token;
-			istringstream iss(String);
-			std::cout << "\nLa frase escrita es: ";
-			stringstream morse;
-			while (getline(iss, token, ' ')) {
-				if (strcmp(token.c_str(), ".-") == 0)
-					cout << "A";
-				else if (strcmp(token.c_str(), "-...") == 0)
-					cout << "B";
-				else if (strcmp(token.c_str(), "-.-.") == 0)
-					cout << "C";
-				else if (strcmp(token.c_str(), "-..") == 0)
-					cout << "D";
-				else if (strcmp(token.c_str(), ".") == 0)
-					cout << "E";
-				else if (strcmp(token.c_str(), "..-.") == 0)
-					cout << "F";
-				else if (strcmp(token.c_str(), "--.") == 0)
-					cout << "G";
-				else if (strcmp(token.c_str(), "....") == 0)
-					cout << "H";
-				else if (strcmp(token.c_str(), "..") == 0)
-					cout << "I";
-				else if (strcmp(token.c_str(), ".---") == 0)
-					cout << "J";
-				else if (strcmp(token.c_str(), "-.-") == 0)
-					cout << "K";
-				else if (strcmp(token.c_str(), ".-..") == 0)
-					cout << "L";
-				else if (strcmp(token.c_str(), "--") == 0)
-					cout << "M";
-				else if (strcmp(token.c_str(), "-.") == 0)
-					cout << "N";
-				else if (strcmp(token.c_str(), "---") == 0)
-					cout << "O";
-				else if (strcmp(token.c_str(), ".--.") == 0)
-					cout << "P";
-				else if (strcmp(token.c_str(), "--.-") == 0)
-					cout << "Q";
-				else if (strcmp(token.c_str(), ".-.") == 0)
-					cout << "R";
-				else if (strcmp(token.c_str(), "...") == 0)
-					cout << "S";
-				else if (strcmp(token.c_str(), "-") == 0)
-					cout << "T";
-				else if (strcmp(token.c_str(), "..-") == 0)
-					cout << "U";
-				else if (strcmp(token.c_str(), "...-") == 0)
-					cout << "V";
-				else if (strcmp(token.c_str(), ".--") == 0)
-					cout << "W";
-				else if (strcmp(token.c_str(), "-..-") == 0)
-					cout << "X";
-				else if (strcmp(token.c_str(), "-.--") == 0)
-					cout << "Y";
-				else if (strcmp(token.c_str(), "--..") == 0)
-					cout << "Z";
-				else if (strcmp(token.c_str(), "-----") == 0)
-					cout << "0";
-				else if (strcmp(token.c_str(), ".----") == 0)
-					cout << "1";
-				else if (strcmp(token.c_str(), "..---") == 0)
-					cout << "2";
-				else if (strcmp(token.c_str(), "...--") == 0)
-					cout << "3";
-				else if (strcmp(token.c_str(), "....-") == 0)
-					cout << "4";
-				else if (strcmp(token.c_str(), ".....") == 0)
-					cout << "5";
-				else if (strcmp(token.c_str(), "-....") == 0)
-					cout << "6";
-				else if (strcmp(token.c_str(), "--...") == 0)
-					cout << "7";
-				else if (strcmp(token.c_str(), "---..") == 0)
-					cout << "8";
-				else if (strcmp(token.c_str(), "----.") == 0)
-					cout << "9";
-			}
-
+        if (encontrado == 1) 
+        {
+            FraseNormal[contadorfrasenormal++] = Simbolos[contador - 1];
+            printf(" %c", Simbolos[contador - 1]);
+        }
+   
+        Puntero = strtok(NULL, Delimitador);
+    }
+	
 
         break;
 
