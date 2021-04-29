@@ -8,8 +8,8 @@ int pos = 0, lineLenght = 1;
 import processing.serial.*;
 Serial myPort;
 ////
-float DELAY = 3.5;
-int SCALE = 2;
+float DELAY = 3.25;
+int SCALE = 3;
 void setup() {
 
   /////Serial
@@ -27,6 +27,7 @@ void setup() {
 
   blackAndWhite(threshold);// CONVERTIMOS A BLANCO Y NEGRO LA IMAGEN INICIAL
   totalPixels = source.width * source.height;
+  delay(3000);
 }
 
 void draw()
