@@ -170,3 +170,176 @@ int main(int argc, char* argv[])
    
         Puntero = strtok(NULL, Delimitador);
     }
+    
+    
+    //Todo junto pero no va
+    #include <stdio.h> 
+#include <string.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+    char opcion= ' ';
+	int opcion2 = 0;
+	char Menu, Insertar, Morse;
+
+int i, j;
+
+	char l[37] = { 'a','b','c','d','e','f','g','h','i',
+		'j','k','l','m','n','o','p','q','r','s','t',
+		'u','v','w','x','y','z','0','1','2','3','4',
+		'5','6','7','8','9',' ' };
+    char m[37][7] = { {".-"}, {"-..."}, {"-.-."}, {"-.."},
+        {"."}, {"..-."}, {"--."}, {"...."}, {".."},
+        {".---"}, {"-.-"}, {".-.."}, {"--"}, {"-."},
+        {"---"}, {".--."}, {"--.-"}, {".-." }, { "..." },
+        {"-"}, {"..-"}, {"...-"}, {".--"}, {"-..-"},
+        {"-.--"}, {"--.."}, {"-----"}, {".----"}, {"..---"},
+        {"...--"}, {"....-"}, {"....."}, {"-...."}, {"--..."},
+        {"---.."}, {"----."} };
+
+    char cadena[2000]{};
+
+    
+        system("cls");
+		printf("\n\nMenu de Opciones\t 1.Espa\xA4ol a morse\t 2. Morse a  espa\xA4ol\t 3. SALIR");
+		printf("Ingrese una opcion : ");
+		scanf_s("%d", &opcion2);
+		
+    
+   
+	switch (opcion)
+    {
+    case 1: //español a morse;
+
+        printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
+        gets_s(cadena);
+        getchar();
+
+
+        for (i = 0; cadena[i] != '\0'; i++)
+            for (j = 0;j < 37;j++)
+                if (cadena[i] == l[j])
+                    printf("%s", m[j]);
+
+        break;
+
+
+    case 2://morse a español
+
+	{
+		std::cout << "\t-----------CODIGO MORSE------------\n\n";
+		std::cout << "\t____________________________________\n";
+		std::cout << "\t|A .-   |B -...  |C -.-.  |D -..   |\n";
+		std::cout << "\t|E .    |F ..-.  |G --.   |H ....  |\n";
+		std::cout << "\t|I ..   |J .---  |K -.-   |L .-..  |\n";
+		std::cout << "\t|M --   |N -.    |O ---   |P .--.  |\n";
+		std::cout << "\t|Q --.- |R .-.   |S ...   |T -     |\n";
+		std::cout << "\t|U ..-  |V ...-  |W .--   |X -..-  |\n";
+		std::cout << "\t|Y -.-- |Z --..  |0 ----- |1 .---- |\n";
+		std::cout << "\t|2 ..---|3 ...-- |4 ....- |5 ..... |\n";
+		std::cout << "\t|6 -....|7 --... |8 ---.. |9 ----. |\n";
+
+
+		{
+			string String = "";
+			Menu();
+			Insertar(String);
+			Morse(String);
+			std::cin.get();
+			return 0;
+		}
+
+		void Insertar(string & String) {
+			std::cout << "\nIngresa el codigo: ";
+			getline(cin, String);
+		}
+		void Morse(string String) {
+			string token;
+			istringstream iss(String);
+			std::cout << "\nLa frase escrita es: ";
+			stringstream morse;
+			while (getline(iss, token, ' ')) {
+				if (strcmp(token.c_str(), ".-") == 0)
+					cout << "A";
+				else if (strcmp(token.c_str(), "-...") == 0)
+					cout << "B";
+				else if (strcmp(token.c_str(), "-.-.") == 0)
+					cout << "C";
+				else if (strcmp(token.c_str(), "-..") == 0)
+					cout << "D";
+				else if (strcmp(token.c_str(), ".") == 0)
+					cout << "E";
+				else if (strcmp(token.c_str(), "..-.") == 0)
+					cout << "F";
+				else if (strcmp(token.c_str(), "--.") == 0)
+					cout << "G";
+				else if (strcmp(token.c_str(), "....") == 0)
+					cout << "H";
+				else if (strcmp(token.c_str(), "..") == 0)
+					cout << "I";
+				else if (strcmp(token.c_str(), ".---") == 0)
+					cout << "J";
+				else if (strcmp(token.c_str(), "-.-") == 0)
+					cout << "K";
+				else if (strcmp(token.c_str(), ".-..") == 0)
+					cout << "L";
+				else if (strcmp(token.c_str(), "--") == 0)
+					cout << "M";
+				else if (strcmp(token.c_str(), "-.") == 0)
+					cout << "N";
+				else if (strcmp(token.c_str(), "---") == 0)
+					cout << "O";
+				else if (strcmp(token.c_str(), ".--.") == 0)
+					cout << "P";
+				else if (strcmp(token.c_str(), "--.-") == 0)
+					cout << "Q";
+				else if (strcmp(token.c_str(), ".-.") == 0)
+					cout << "R";
+				else if (strcmp(token.c_str(), "...") == 0)
+					cout << "S";
+				else if (strcmp(token.c_str(), "-") == 0)
+					cout << "T";
+				else if (strcmp(token.c_str(), "..-") == 0)
+					cout << "U";
+				else if (strcmp(token.c_str(), "...-") == 0)
+					cout << "V";
+				else if (strcmp(token.c_str(), ".--") == 0)
+					cout << "W";
+				else if (strcmp(token.c_str(), "-..-") == 0)
+					cout << "X";
+				else if (strcmp(token.c_str(), "-.--") == 0)
+					cout << "Y";
+				else if (strcmp(token.c_str(), "--..") == 0)
+					cout << "Z";
+				else if (strcmp(token.c_str(), "-----") == 0)
+					cout << "0";
+				else if (strcmp(token.c_str(), ".----") == 0)
+					cout << "1";
+				else if (strcmp(token.c_str(), "..---") == 0)
+					cout << "2";
+				else if (strcmp(token.c_str(), "...--") == 0)
+					cout << "3";
+				else if (strcmp(token.c_str(), "....-") == 0)
+					cout << "4";
+				else if (strcmp(token.c_str(), ".....") == 0)
+					cout << "5";
+				else if (strcmp(token.c_str(), "-....") == 0)
+					cout << "6";
+				else if (strcmp(token.c_str(), "--...") == 0)
+					cout << "7";
+				else if (strcmp(token.c_str(), "---..") == 0)
+					cout << "8";
+				else if (strcmp(token.c_str(), "----.") == 0)
+					cout << "9";
+			}
+
+
+        break;
+
+    }
