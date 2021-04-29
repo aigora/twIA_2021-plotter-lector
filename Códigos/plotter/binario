@@ -1,18 +1,39 @@
 #include<stdio.h>
 
+
 int main()
-
 {
-	int numero, i=0,j;
-	int vector[10000];
-	numero = 1010;
-		while (numero > 0) {
+    int binario, resultado=0,digito ,posicion =0 ;
+	int vector[] = { 1,2,4,8,16,32,64,128,256,512 };
 
-		 numero=vector[i] * 2 ;
-		numero /= 2;
-		++i;
+	int ascii=0;
+
+	printf("Introduzca un numero binario:");
+	scanf_s("%d", &binario);
+	while (binario > 0) {
+		digito = binario % 10;
+
+
+		if(digito==1){
+			resultado = resultado+ vector[posicion];
+			
+		}
+		posicion++;
+		
+		binario = binario /10;
+
 	}
-	for (j = 1 - 1; j >= 0; --j)
-		printf("%d", vector[i]);
+    printf("El numero decimal es %i:",resultado);
+
+	
+
+	
+		printf("El numero es %i, equivale aacii :%c", resultado,resultado );
+	
 	return 0;
+
+
+	
+
+
 }
