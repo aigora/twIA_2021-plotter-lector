@@ -23,7 +23,7 @@ void slicer()
 {
   int[] xSteps ={}, servoSteps = {};
   int servoState = 0, layerSteps = 0;
-  if (pos < totalPixels - destination.width) 
+  if(pos < totalPixels - destination.width) 
   {
     pos+= destination.width;
   } else
@@ -78,7 +78,6 @@ void slicer()
         //amarillo la parte que ignoro
         ignore(pos - 1, lineLenght -1);
         //avanzo el papel
-        sendData(-(layerSteps -lineLenght ), -1, 0);//vuelve al origen
         //println("LINEA VACIA");
       } else
       {
@@ -91,6 +90,7 @@ void slicer()
     }
   }
   printDraw(xSteps, servoSteps);//imprimo los valores
+  sendData(-(layerSteps -lineLenght ), -1, 0);//vuelve al origen
 
   finalimg.updatePixels();
   image(finalimg, (1920 - destination.width) /2, (1080 - destination.height) /2);//coloco en el centro
@@ -99,18 +99,16 @@ void waitForMachine(int steps)
 {
   if (abs(steps * DELAY) < 150)
   {
-      delay(150);
-
+    delay(150);
   } else
   {
-      delay(int(abs(steps * DELAY)));
-
+    delay(int(abs(steps * DELAY)));
   }
 }
 void sendData(int x, int y, int servo)
 {
   x *= SCALE;
-  y *= 8;
+  y *= 5;
 
   println(str(x) + "," + str(-y) + "," + str(servo) + ",");
   //send serial
