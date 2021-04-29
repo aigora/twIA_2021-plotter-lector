@@ -1,0 +1,18 @@
+#include<stdio.h>
+
+int main()
+
+{
+	int numero, i=0,j;
+	int vector[10000];
+	numero = 1010;
+		while (numero > 0) {
+
+		 numero=vector[i] * 2 ;
+		numero /= 2;
+		++i;
+	}
+	for (j = 1 - 1; j >= 0; --j)
+		printf("%d", vector[i]);
+	return 0;
+}
