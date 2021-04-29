@@ -9,7 +9,7 @@ import processing.serial.*;
 Serial myPort;
 ////
 float DELAY = 3.25;
-int SCALE = 3;
+int SCALE = 4;
 void setup() {
 
   /////Serial
