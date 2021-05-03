@@ -1,351 +1,140 @@
-//DE TEXTO A MORSE
-#include <stdlib.h>
-#include <conio.h>
+
 #include <stdio.h> 
+#include <string.h>
+#include <stdlib.h>
 #include <iostream>
+
 using namespace std;
+int compare(char a[], char b[]);
 
 int main()
 {
-    int i, j;
-    char opcion = 0;
-
-    char l[37] = { 'a','b','c','d','e','f','g','h','i',
-        'j','k','l','m','n','o','p','q','r','s','t',
-        'u','v','w','x','y','z','0','1','2','3','4',
-        '5','6','7','8','9',' ' };
-    char m[37][7] = { {".-"}, {"-..."}, {"-.-."}, {"-.."},
-        {"."}, {"..-."}, {"--."}, {"...."}, {".."},
-        {".---"}, {"-.-"}, {".-.."}, {"--"}, {"-."},
-        {"---"}, {".--."}, {"--.-"}, {".-." }, { "..." },
-        {"-"}, {"..-"}, {"...-"}, {".--"}, {"-..-"},
-        {"-.--"}, {"--.."}, {"-----"}, {".----"}, {"..---"},
-        {"...--"}, {"....-"}, {"....."}, {"-...."}, {"--..."},
-        {"---.."}, {"----."} };
-
-    char cadena[2000]{};
-
-      do
-      {
-        system("cls");
-        cout << "\n\nMenu de Opciones" << endl;
-        cout << "a. Espa\xA4ol a morse" << endl;
-        cout << "b. Morse a  espa\xA4ol" << endl;
-        cout << "c. SALIR" << endl;
-        cout << "\nIngrese una opcion: ";
-        cin >> opcion;
-    }
-
-    if (opcion == 1);
-    {
-    printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
-    gets_s(cadena);
-    getchar();
-
-
-    for (i = 0; cadena[i] != '\0'; i++)
-        for (j = 0;j < 37;j++)
-            if (cadena[i] == l[j])
-                printf("%s", m[j]);
-
-    return 0;
-}
-//DE MORSE A TEXTO
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-int main(int argc, char* argv[])
-{
-    char Morse[48][7];
-    char Simbolos[48];
-    char FraseMorse[200];
-    char FraseNormal[200];
-    
-    int contador;
-    int encontrado;
-    int contadorfrasenormal = 0;
-    char CopiaFraseMorse[200];
-    char* Puntero;
-    char Delimitador[5] = " ";
-   
-    strcpy(Morse[0], ".-"); // A
-    Simbolos[0] = 'A';
-    strcpy(Morse[1], "-..."); // B
-    Simbolos[1] = 'B';
-    strcpy(Morse[2], "-.-."); // C
-    Simbolos[2] = 'C';
-    strcpy(Morse[3], "-.."); // D
-    Simbolos[3] = 'D';
-    strcpy(Morse[4], "."); // E
-    Simbolos[4] = 'E';
-    strcpy(Morse[5], "..-."); // F
-    Simbolos[5] = 'A';
-    strcpy(Morse[6], "--."); // G
-    Simbolos[6] = 'G';
-    strcpy(Morse[7], "...."); // H
-    Simbolos[7] = 'H';
-    strcpy(Morse[8], ".."); // I
-    Simbolos[8] = 'I';
-    strcpy(Morse[9], ".---"); // J
-    Simbolos[9] = 'J';
-    strcpy(Morse[10], "-.-"); // K
-    Simbolos[10] = 'K';
-    strcpy(Morse[11], ".-.."); // L
-    Simbolos[11] = 'L';
-    strcpy(Morse[12], "--"); // M
-    Simbolos[12] = 'M';
-    strcpy(Morse[13], "-."); // N
-    Simbolos[13] = 'N';
-    strcpy(Morse[14], "---"); // O
-    Simbolos[14] = 'O';
-    strcpy(Morse[15], ".--."); // P
-    Simbolos[15] = 'P';
-    strcpy(Morse[16], "--.-"); // Q
-    Simbolos[16] = 'Q';
-    strcpy(Morse[17], ".-."); // R
-    Simbolos[17] = 'R';
-    strcpy(Morse[18], "..."); // S
-    Simbolos[18] = 'S';
-    strcpy(Morse[19], "-"); // T
-    Simbolos[19] = 'T';
-    strcpy(Morse[20], "..-"); // U
-    Simbolos[20] = 'U';
-    strcpy(Morse[21], "...-"); // V
-    Simbolos[21] = 'V';
-    strcpy(Morse[22], ".--"); // W
-    Simbolos[22] = 'W';
-    strcpy(Morse[23], "-..-"); // X
-    Simbolos[23] = 'X';
-    strcpy(Morse[24], "-.--"); // Y
-    Simbolos[24] = 'Y';
-    strcpy(Morse[25], "--.."); // Z
-    Simbolos[25] = 'Z';
-    strcpy(Morse[30], "-----"); // 0
-    Simbolos[30] = '0';
-    strcpy(Morse[31], ".----"); // 1
-    Simbolos[31] = '1';
-    strcpy(Morse[32], "..---"); // 2
-    Simbolos[32] = '2';
-    strcpy(Morse[33], "...--"); // 3
-    Simbolos[33] = '3';
-    strcpy(Morse[34], "....-"); // 4
-    Simbolos[34] = '4';
-    strcpy(Morse[35], "....."); // 5
-    Simbolos[35] = '5';
-    strcpy(Morse[36], "-...."); // 6
-    Simbolos[36] = '6';
-    strcpy(Morse[37], "--..."); // 7
-    Simbolos[37] = '7';
-    strcpy(Morse[38], "---.."); // 8
-    Simbolos[38] = '8';
-    strcpy(Morse[39], "----."); // 9
-    Simbolos[39] = '9';
-    
-    printf("\nFrase en morse:");
-    gets_s(FraseMorse);
-   
-    strcpy(CopiaFraseMorse, FraseMorse);
-    printf("\nFrase a analizar: %s", CopiaFraseMorse);
-   
-    contadorfrasenormal = 0;
-    printf("\ndescomposición de la cadena en trozos\n");
-    
-    Puntero = strtok(CopiaFraseMorse, Delimitador);
-    
-    while (Puntero != NULL) {
-        printf("\n%s", Puntero);
-        contador = 0;
-        encontrado = 0;
-        while (contador < 48 && encontrado != 1) 
-        {
-            if (strcmp(Puntero, Morse[contador++]) == 0) encontrado = 1;
-        }
-
-        if (encontrado == 1) 
-        {
-            FraseNormal[contadorfrasenormal++] = Simbolos[contador - 1];
-            printf(" %c", Simbolos[contador - 1]);
-        }
-   
-        Puntero = strtok(NULL, Delimitador);
-    }
-    
-    
-    //Todo junto pero no va
-    #include <stdio.h> 
-#include <string.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <iostream>
-
-using namespace std;
-
-
-int main(int argc, char* argv[])
-{
-    char Morse[48][7];
-    char Simbolos[48];
-    char FraseMorse[200];
-    char FraseNormal[200];
-
-    int contador;
-    int encontrado;
-    int contadorfrasenormal = 0;
-    char CopiaFraseMorse[200];
-    char* Puntero;
-    char Delimitador[5] = " ";
+	char Morse[48][7];
+	char Simbolos[48];
 	char opcion = 0;
-	int opcion2 = 0;
-	char Menu, Insertar, Morse;
 
-int i, j;
+	int i, j;
 
 	char l[37] = { 'a','b','c','d','e','f','g','h','i',
 		'j','k','l','m','n','o','p','q','r','s','t',
 		'u','v','w','x','y','z','0','1','2','3','4',
 		'5','6','7','8','9',' ' };
-    char m[37][7] = { {".-"}, {"-..."}, {"-.-."}, {"-.."},
-        {"."}, {"..-."}, {"--."}, {"...."}, {".."},
-        {".---"}, {"-.-"}, {".-.."}, {"--"}, {"-."},
-        {"---"}, {".--."}, {"--.-"}, {".-." }, { "..." },
-        {"-"}, {"..-"}, {"...-"}, {".--"}, {"-..-"},
-        {"-.--"}, {"--.."}, {"-----"}, {".----"}, {"..---"},
-        {"...--"}, {"....-"}, {"....."}, {"-...."}, {"--..."},
-        {"---.."}, {"----."} };
+	char m[37][7] = { {".-"}, {"-..."}, {"-.-."}, {"-.."},
+		{"."}, {"..-."}, {"--."}, {"...."}, {".."},
+		{".---"}, {"-.-"}, {".-.."}, {"--"}, {"-."},
+		{"---"}, {".--."}, {"--.-"}, {".-." }, { "..." },
+		{"-"}, {"..-"}, {"...-"}, {".--"}, {"-..-"},
+		{"-.--"}, {"--.."}, {"-----"}, {".----"}, {"..---"},
+		{"...--"}, {"....-"}, {"....."}, {"-...."}, {"--..."},
+		{"---.."}, {"----."},{"/"} };
 
-    char cadena[2000]{};
+	char cadena[2000]{};
 
-    
-        system("cls");
+	do
+	{
 		cout << "\n\nMenu de Opciones" << endl;
 		cout << "a. Espa\xA4ol a morse" << endl;
 		cout << "b. Morse a  espa\xA4ol" << endl;
 		cout << "c. SALIR" << endl;
 		cout << "\nIngrese una opcion: ";
 		cin >> opcion;
-    
-   
-	switch (opcion)
-    {
-    case 'a': //español a morse;
 
-        printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
-        gets_s(cadena);
-        getchar();
+		switch (opcion)
+		{
+		case 'a': //español a morse;
 
-
-        for (i = 0; cadena[i] != '\0'; i++)
-            for (j = 0;j < 37;j++)
-                if (cadena[i] == l[j])
-                    printf("%s", m[j]);
-
-        break;
+			printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
+			getchar();
+			gets_s(cadena);
 
 
-    case 'b'://morse a español
+			for (i = 0; cadena[i] != '\0'; i++)
+			{
+				for (j = 0; j < 37; j++)
+					if (cadena[i] == l[j])
+					{
+						for (int k = 0; m[j][k] != '\0'; k++)
+						{
+							printf("%c", m[j][k]);
 
-    {
-        strcpy(Morse[0], ".-"); // A
-        Simbolos[0] = 'A';
-        strcpy(Morse[1], "-..."); // B
-        Simbolos[1] = 'B';
-        strcpy(Morse[2], "-.-."); // C
-        Simbolos[2] = 'C';
-        strcpy(Morse[3], "-.."); // D
-        Simbolos[3] = 'D';
-        strcpy(Morse[4], "."); // E
-        Simbolos[4] = 'E';
-        strcpy(Morse[5], "..-."); // F
-        Simbolos[5] = 'A';
-        strcpy(Morse[6], "--."); // G
-        Simbolos[6] = 'G';
-        strcpy(Morse[7], "...."); // H
-        Simbolos[7] = 'H';
-        strcpy(Morse[8], ".."); // I
-        Simbolos[8] = 'I';
-        strcpy(Morse[9], ".---"); // J
-        Simbolos[9] = 'J';
-        strcpy(Morse[10], "-.-"); // K
-        Simbolos[10] = 'K';
-        strcpy(Morse[11], ".-.."); // L
-        Simbolos[11] = 'L';
-        strcpy(Morse[12], "--"); // M
-        Simbolos[12] = 'M';
-        strcpy(Morse[13], "-."); // N
-        Simbolos[13] = 'N';
-        strcpy(Morse[14], "---"); // O
-        Simbolos[14] = 'O';
-        strcpy(Morse[15], ".--."); // P
-        Simbolos[15] = 'P';
-        strcpy(Morse[16], "--.-"); // Q
-        Simbolos[16] = 'Q';
-        strcpy(Morse[17], ".-."); // R
-        Simbolos[17] = 'R';
-        strcpy(Morse[18], "..."); // S
-        Simbolos[18] = 'S';
-        strcpy(Morse[19], "-"); // T
-        Simbolos[19] = 'T';
-        strcpy(Morse[20], "..-"); // U
-        Simbolos[20] = 'U';
-        strcpy(Morse[21], "...-"); // V
-        Simbolos[21] = 'V';
-        strcpy(Morse[22], ".--"); // W
-        Simbolos[22] = 'W';
-        strcpy(Morse[23], "-..-"); // X
-        Simbolos[23] = 'X';
-        strcpy(Morse[24], "-.--"); // Y
-        Simbolos[24] = 'Y';
-        strcpy(Morse[25], "--.."); // Z
-        Simbolos[25] = 'Z';
-        strcpy(Morse[30], "-----"); // 0
-        Simbolos[30] = '0';
-        strcpy(Morse[31], ".----"); // 1
-        Simbolos[31] = '1';
-        strcpy(Morse[32], "..---"); // 2
-        Simbolos[32] = '2';
-        strcpy(Morse[33], "...--"); // 3
-        Simbolos[33] = '3';
-        strcpy(Morse[34], "....-"); // 4
-        Simbolos[34] = '4';
-        strcpy(Morse[35], "....."); // 5
-        Simbolos[35] = '5';
-        strcpy(Morse[36], "-...."); // 6
-        Simbolos[36] = '6';
-        strcpy(Morse[37], "--..."); // 7
-        Simbolos[37] = '7';
-        strcpy(Morse[38], "---.."); // 8
-        Simbolos[38] = '8';
-        strcpy(Morse[39], "----."); // 9
-        Simbolos[39] = '9';
+						}
+						printf(" ");
+						break;
+					}
+			}
 
-        printf("\nFrase en morse:");
-        gets_s(FraseMorse);
+			break;
 
-        strcpy(CopiaFraseMorse, FraseMorse);
-        printf("\nFrase a analizar: %s", CopiaFraseMorse);
 
-        contadorfrasenormal = 0;
-        printf("\ndescomposición de la cadena en trozos\n");
+		case 'b'://morse a español
 
-        Puntero = strtok(CopiaFraseMorse, Delimitador);
+		{
+			int i = 0;
+			printf("Escribe un texto u oracion que quieras traducir a codigo español:\n");
+			getchar();
+			gets_s(cadena);
+			int distSpacio = 0;
 
-        while (Puntero != NULL) {
-            printf("\n%s", Puntero);
-            contador = 0;
-            encontrado = 0;
-            while (contador < 48 && encontrado != 1)
-            {
-                if (strcmp(Puntero, Morse[contador++]) == 0) encontrado = 1;
-            }
+			while (cadena[i] != '\0')
+			{
+				// cuento cuantos caracteres hay entre espacio
+				while (cadena[i + distSpacio] != ' ' && cadena[i + distSpacio] != '\0')
+				{
+					// si no es espacio continua incrementando, cogera los simbolos morse que correscponde a 1 letra
+					distSpacio++;
+				}
+				// necesitamos una variable temporal para almacenar el morse// + 1 por el '\0'
+				char* temp;
+				temp = (char*)calloc(distSpacio, 1);
+				if (temp != NULL)
+				{
+					//printf("El tamaño de tem es %d, dist es %d\n", sizeof(temp), distSpacio);
+					//volvemos hacia atras capturando el morse que corresponde a 1 letra
+					for (int j = distSpacio; j > 0; j--)
+					{
+						*(temp + distSpacio - j) = cadena[i + distSpacio - j];
+						//puts(temp);
+					}
+					// comparamos el obtenido con el que esta ordenado, m
+					for (int x = 0; x < 37; x++)
+					{
+						if (compare(temp, m[x]) == 1)//son iguales
+						{
+							printf("%c", l[x]);
+							break;
+						}
 
-            if (encontrado == 1)
-            {
-                FraseNormal[contadorfrasenormal++] = Simbolos[contador - 1];
-                printf(" %c", Simbolos[contador - 1]);
-            }
+					}
+					i += distSpacio + 1;
+					distSpacio = 0;
+					free(temp);
+				}
+				else
+				{
+					printf("\nERROR NO SE PUEDE ALOCAR MEMORIA\n");
+				}
 
-            Puntero = strtok(NULL, Delimitador);
+			}
+			break;
+		}
+		}
+	} while (opcion != 'c');
+	
 
-            break;
-        }
+
+}
+int compare(char a[], char b[])
+{
+	for (int k = 0; a[k] == '.' || a[k] == '-' || b[k] == '.' || b[k] == '-'; k++)
+	{
+		if (a[k] != b[k])
+		{
+			return 0;
+		}
+		else
+		{
+			continue;
+		}
+	}
+	return 1;
+}
