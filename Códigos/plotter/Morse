@@ -1,24 +1,19 @@
-
 #include <stdio.h> 
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
+#include <malloc.h>
 
 using namespace std;
 int compare(char a[], char b[]);
-int español(char l, char m, char cadena, int i, int j);
-int morse(char l, char m, char cadena, int i, int j, int distSpacio);
-
+void esp2morse(char l[], char m[][7]);
+void morse2esp(char l[], char m[][7]);
 
 int main()
 {
-int general(char Morse, char Simbolos, char opcion);
-{
-	char Morse[48][7];
-	char Simbolos[48];
 	char opcion = 0;
-
-	int i, j;
+	int i = 0, j = 0, n = 0;
+	char* cadena;
 
 	char l[37] = { 'a','b','c','d','e','f','g','h','i',
 		'j','k','l','m','n','o','p','q','r','s','t',
@@ -33,105 +28,34 @@ int general(char Morse, char Simbolos, char opcion);
 		{"...--"}, {"....-"}, {"....."}, {"-...."}, {"--..."},
 		{"---.."}, {"----."},{"/"} };
 
-	char cadena[2000]{};
-
 	do
 	{
-		cout << "\n\nMenu de Opciones" << endl;
-		cout << "a. Espa\xA4ol a morse" << endl;
-		cout << "b. Morse a  espa\xA4ol" << endl;
-		cout << "c. SALIR" << endl;
-		cout << "\nIngrese una opcion: ";
-		cin >> opcion;
+		printf("\tIndique la longitud de la cadena:");
+		scanf_s("%d", &i);
 
-		switch (opcion)
-		{
-		case 'a': //español a morse;
-int español(char l, char m, char cadena, int i, int j);
+		cadena = (char*)malloc(sizeof(int)*(i + 1));
+
+			cout << "\n\nMenu de Opciones" << endl;
+			cout << "a. Espa\xA4ol a morse" << endl;
+			cout << "b. Morse a  espa\xA4ol" << endl;
+			cout << "c. SALIR" << endl;
+			cout << "\nIngrese una opcion: ";
+			cin >> opcion;
+
+
+			switch (opcion)
 			{
-			printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
-			getchar();
-			gets_s(cadena);
-
-
-			for (i = 0; cadena[i] != '\0'; i++) //inicia desde i hasta la cantidad de dígitos que tenga la cadena
-			{
-				for (j = 0; j < 37; j++) //una vez que el i llegue a 0, pasa al j que inicia hasta llegar al 37 (número de variables posibles en char) 
-					if (cadena[i] == l[j]) //compara la cadena introducida con su correspondiente en traducción
-					{
-						for (int k = 0; m[j][k] != '\0'; k++)
-						{
-							printf("%c", m[j][k]);
-
-						}				//una vez que la encuentra, lo imprime
-						printf(" ");
-						break;
-					}
+			case 'a': //español a morse;
+				esp2morse(l, m);
+				break;
+			case 'b'://morse a español
+				morse2esp(l, m);
+				break;
 			}
-}
-			break;
+		} while (opcion != 'c');
+	}
 
 
-		case 'b'://morse a español
-
-		{
-		int morse(char m, char l, char cadena, int i, int j, int distSpacio);
-			{
-			int i = 0;
-			printf("Escribe un texto u oracion que quieras traducir a codigo español:\n");
-			getchar();
-			gets_s(cadena);
-			int distSpacio = 0;
-
-			while (cadena[i] != '\0')
-			{
-				// cuento cuantos caracteres hay entre espacio
-				while (cadena[i + distSpacio] != ' ' && cadena[i + distSpacio] != '\0')
-				{
-					// si no es espacio continua incrementando, cogera los simbolos morse que correscponde a 1 letra
-					distSpacio++;
-				}
-				// necesitamos una variable temporal para almacenar el morse// + 1 por el '\0'
-				char* temp;
-				temp = (char*)calloc(distSpacio, 1);
-				if (temp != NULL)
-				{
-					//printf("El tamaño de tem es %d, dist es %d\n", sizeof(temp), distSpacio);
-					//volvemos hacia atras capturando el morse que corresponde a 1 letra
-					for (int j = distSpacio; j > 0; j--)
-					{
-						*(temp + distSpacio - j) = cadena[i + distSpacio - j];
-						//puts(temp);
-					}
-					// comparamos el obtenido con el que esta ordenado, m
-					for (int x = 0; x < 37; x++)
-					{
-						if (compare(temp, m[x]) == 1)//son iguales
-						{
-							printf("%c", l[x]);
-							break;
-						}
-
-					}
-					i += distSpacio + 1;
-					distSpacio = 0;
-					free(temp);
-				}
-				else
-				{
-					printf("\nERROR NO SE PUEDE ALOCAR MEMORIA\n");
-				}
-
-			}
-			break;
-		}
-		}
-		}
-	} while (opcion != 'c');
-	
-
-
-}
 int compare(char a[], char b[])
 {
 	for (int k = 0; a[k] == '.' || a[k] == '-' || b[k] == '.' || b[k] == '-'; k++)
@@ -147,12 +71,75 @@ int compare(char a[], char b[])
 	}
 	return 1;
 }
-int español(char l, char m, char cadena, int i, int j);
+
+void esp2morse(char l[], char m[][7])
 {
-	return 0;
+	char cadena[2000];
+	printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
+	getchar();
+	gets_s(cadena);
+
+
+	for (int i = 0; cadena[i] != '\0'; i++) //inicia desde i hasta la cantidad de dígitos que tenga la cadena
+	{
+		for (int j = 0; j < 37; j++) //una vez que el i llegue a 0, pasa al j que inicia hasta llegar al 37 (número de variables posibles en char) 
+			if (cadena[i] == l[j]) //compara la cadena introducida con su correspondiente en traducción
+			{
+				for (int k = 0; m[j][k] != '\0'; k++)
+				{
+					printf("%c", m[j][k]);
+				}							//una vez que la encuentra, lo imprime
+				printf(" ");
+				break;
+			}
+	}
 }
 
-int morse(char l, char m, char cadena, int i, int j, int distSpacio);
+void morse2esp(char l[], char m[][7])
 {
-	return 0;
+	char cadena[2000];
+	int i = 0;
+	printf("Escribe un texto u oracion que quieras traducir a codigo español:\n");
+	getchar();
+	gets_s(cadena);
+	int distSpacio = 0;
+
+	while (cadena[i] != '\0')
+	{
+		// cuento cuantos caracteres hay entre espacio
+		while (cadena[i + distSpacio] != ' ' && cadena[i + distSpacio] != '\0')
+		{
+			// si no es espacio continua incrementando, cogera los simbolos morse que correscponde a 1 letra
+			distSpacio++;
+		}
+		// necesitamos una variable temporal para almacenar el morse// + 1 por el '\0'
+		char* temp;
+		temp = (char*)calloc(distSpacio, 1);
+		if (temp != NULL)
+		{
+			//printf("El tamaño de tem es %d, dist es %d\n", sizeof(temp), distSpacio);
+			//volvemos hacia atras capturando el morse que corresponde a 1 letra
+			for (int j = distSpacio; j > 0; j--)
+			{
+				*(temp + distSpacio - j) = cadena[i + distSpacio - j];
+				//puts(temp);
+			}
+			// comparamos el obtenido con el que esta ordenado, m
+			for (int x = 0; x < 37; x++)
+			{
+				if (compare(temp, m[x]) == 1)//son iguales
+				{
+					printf("%c", l[x]);
+					break;
+				}
+			}
+			i += distSpacio + 1;
+			distSpacio = 0;
+			free(temp);
+		}
+		else
+		{
+			printf("\nERROR NO SE PUEDE ALOCAR MEMORIA\n");
+		}
+	}
 }
