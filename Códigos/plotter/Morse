@@ -6,8 +6,13 @@
 
 using namespace std;
 int compare(char a[], char b[]);
+int español(char l, char m, char cadena, int i, int j);
+int morse(char l, char m, char cadena, int i, int j, int distSpacio);
+
 
 int main()
+{
+int general(char Morse, char Simbolos, char opcion);
 {
 	char Morse[48][7];
 	char Simbolos[48];
@@ -42,33 +47,36 @@ int main()
 		switch (opcion)
 		{
 		case 'a': //español a morse;
-
+int español(char l, char m, char cadena, int i, int j);
+			{
 			printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
 			getchar();
 			gets_s(cadena);
 
 
-			for (i = 0; cadena[i] != '\0'; i++)
+			for (i = 0; cadena[i] != '\0'; i++) //inicia desde i hasta la cantidad de dígitos que tenga la cadena
 			{
-				for (j = 0; j < 37; j++)
-					if (cadena[i] == l[j])
+				for (j = 0; j < 37; j++) //una vez que el i llegue a 0, pasa al j que inicia hasta llegar al 37 (número de variables posibles en char) 
+					if (cadena[i] == l[j]) //compara la cadena introducida con su correspondiente en traducción
 					{
 						for (int k = 0; m[j][k] != '\0'; k++)
 						{
 							printf("%c", m[j][k]);
 
-						}
+						}				//una vez que la encuentra, lo imprime
 						printf(" ");
 						break;
 					}
 			}
-
+}
 			break;
 
 
 		case 'b'://morse a español
 
 		{
+		int morse(char m, char l, char cadena, int i, int j, int distSpacio);
+			{
 			int i = 0;
 			printf("Escribe un texto u oracion que quieras traducir a codigo español:\n");
 			getchar();
@@ -118,6 +126,7 @@ int main()
 			break;
 		}
 		}
+		}
 	} while (opcion != 'c');
 	
 
@@ -137,4 +146,13 @@ int compare(char a[], char b[])
 		}
 	}
 	return 1;
+}
+int español(char l, char m, char cadena, int i, int j);
+{
+	return 0;
+}
+
+int morse(char l, char m, char cadena, int i, int j, int distSpacio);
+{
+	return 0;
 }
