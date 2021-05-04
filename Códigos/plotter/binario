@@ -42,76 +42,65 @@ int main()
 
 // De Texto a binario 
 
-
 #include<stdio.h>
-
 #include <malloc.h>
-
-
 
 char* convertir(int numero)
 {
-    char* out;
-    int i = 0;
+	char* out;
+	int i = 0;
 
-    out =(char*) malloc(8*sizeof(char));
-    //inicio a 0s para tener siempre un binario de 8 bits
-    for (int i = 0; i < 8; i++)
-    {
-        *(out + i) = '0';
-    }
-   
-    //paso de int a binario
-    while (numero > 0)
-    {
-        if (numero % 2 == 0)
-        {
+	out = (char*)calloc(9, sizeof(char*));
+	if (out != NULL)
+	{
+		//inicio a 0s para tener siempre un binario de 8 bits
+		for (int i = 0; i < 8; i++)
+		{
+			*(out + i) = '0';
+		}
 
-            *(out + 7 - i) = '0';
-        }
-        else
-        {
-            *(out + 7- i) = '1';
-        }
-        numero = numero / 2;
-        for (int i =*out- 1; i >= 0; i--);
-        {
-
-
-            i++;
-        }
-       
-    }
-  
-        
-     
-    
-    return out;
+		//paso de int a binario
+		while (numero > 0)
+		{
+			if (numero % 2 == 0)
+			{
+				*(out + 7 - i) = '0';
+			}
+			else
+			{
+				*(out + 7 - i) = '1';
+			}
+			numero = numero / 2;
+			for (int i = *out - 1; i >= 0; i--);
+			{
+				i++;
+			}
+		}
+		return out;
+	}
+	else
+	{
+		printf("No hay memoria suficiente");
+	}
 }
 
+void main()
+{
+	int numero;
+
+	char* numBinario;
+
+	char ASCII;
+	printf("Introduzca un caracter ASCII:");
+	scanf_s("%c", &ASCII, 1);
+	printf("%i", ASCII);
 
 
+	printf("\ningrese el numero que te ha salido decimal:");
+	scanf_s("%i", &numero);
+	numBinario = (char*)calloc(9, sizeof(char));
+	numBinario = convertir(numero);
+	puts(numBinario);
 
-    void main()
- {
-    int numero;
-    
-    char* numBinario;
-
-    char ASCII;
-    printf("Introduzca un caracter ASCII:");
-    scanf_s ("%c", &ASCII);
-    printf("%i", ASCII);
-
-
-    printf("\ningrese el numero que te ha salido decimal:");
-    scanf_s("%i", &numero);
-    numBinario =(char*) malloc(8*sizeof(char));
-    numBinario = convertir(numero);
-    puts(numBinario);
-
-    free(numBinario);
-
-  
-
+	free(numBinario);
 }
