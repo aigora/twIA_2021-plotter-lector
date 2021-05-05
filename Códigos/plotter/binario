@@ -1,41 +1,59 @@
 #include<stdio.h>
+#include<math.h>
+#include<malloc.h>
 
+char bin2ascii(char bin[9]);
+char* cogerTrozo(char frase[], int inicio, int fin);
 
 int main()
+
 {
-    int binario, resultado=0,digito ,posicion =0 ;
-	int vector[] = { 1,2,4,8,16,32,64,128,256,512 };
+	char num[1000];
+	//int a = 0;
+	int resu = 0;
+	//int dato;
 
-	int ascii=0;
+	printf("Introduce una frase formados por 0 o 1:\n");
 
-	printf("Introduzca un numero binario:");
-	scanf_s("%d", &binario);
-	while (binario > 0) {
-		digito = binario % 10;
-
-
-		if(digito==1){
-			resultado = resultado+ vector[posicion];
-			
-		}
-		posicion++;
-		
-		binario = binario /10;
+	gets_s(num);
+	for (int i = 0, k = 8; num[i] != '\0' && num[k] != '\0'; i+= 8, k += 8)
+	{
+		char* trozo = cogerTrozo(num, i, k);
+		resu = bin2ascii(trozo);
+		printf("%c", resu);
 
 	}
-    printf("El numero decimal es %i:",resultado);
 
-	
-
-	
-		printf("El numero es %i, equivale aacii :%c", resultado,resultado );
-	
 	return 0;
+}
 
+char bin2ascii(char bin[9]) 
+{
+	int resu = 0, i = 0;
+	while (bin[i] != '\0')
+	{
+		if (bin[i] == '1')
+		{
+			resu += pow(2, 7 - i);
+		}
+		i++;
+	}
+	return resu;
+}
+char* cogerTrozo(char frase[], int inicio, int fin)
+{
+	char* trozo;
+	int distancia = fin - inicio;
 
-	
-
-
+	trozo = (char*)calloc(distancia + 1, 1);
+	if (trozo != NULL)
+	{
+		for (int i = 0; i < distancia; i++)
+		{
+			*(trozo + i) = frase[inicio + i];
+		}
+		return trozo;
+	}
 }
 
 
