@@ -30,18 +30,32 @@ int main()
 
 	do
 	{
-		printf("\tIndique la longitud de la cadena:");
+		printf("\nIndique la longitud de la cadena:");
 		scanf_s("%d", &i);
+		getchar();
 
-		cadena = (char*)malloc(sizeof(int)*(i + 1));
+		cadena = (char*)malloc(sizeof(int) * (i + 1)); //operador para asignar el tamaño exacto
 
+		if (cadena == NULL)
+		{
+			printf("No hay memoria disponible");
+			return 0;
+		}
+		else
+		{
 			cout << "\n\nMenu de Opciones" << endl;
-			cout << "a. Espa\xA4ol a morse" << endl;
-			cout << "b. Morse a  espa\xA4ol" << endl;
-			cout << "c. SALIR" << endl;
-			cout << "\nIngrese una opcion: ";
-			cin >> opcion;
+				cout << "a. Espa\xA4ol a morse" << endl;
+				cout << "b. Morse a  espa\xA4ol" << endl;
+				cout << "c. SALIR" << endl;
 
+				if (cadena != NULL);
+			{
+
+				
+				cout << "\nIngrese una opcion: ";
+				cin >> opcion;
+			}
+		}
 
 			switch (opcion)
 			{
@@ -54,6 +68,7 @@ int main()
 			}
 		} while (opcion != 'c');
 	}
+
 
 
 int compare(char a[], char b[])
@@ -99,7 +114,7 @@ void morse2esp(char l[], char m[][7])
 {
 	char cadena[2000];
 	int i = 0;
-	printf("Escribe un texto u oracion que quieras traducir a codigo español:\n");
+	printf("Escribe un texto u oracion que quieras traducir a codigo espa\xA4ol:\n");
 	getchar();
 	gets_s(cadena);
 	int distSpacio = 0;
