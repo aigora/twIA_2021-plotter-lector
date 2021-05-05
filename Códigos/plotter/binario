@@ -86,21 +86,24 @@ char* convertir(int numero)
 
 void main()
 {
-	int numero;
-
+	char numero;
 	char* numBinario;
+	char ASCII[2000];
+	int i = 0;
 
-	char ASCII;
-	printf("Introduzca un caracter ASCII:");
-	scanf_s("%c", &ASCII, 1);
-	printf("%i", ASCII);
+	printf("Escribe un texto u oracion con el lenguaje Ascii\n");
 
+	gets_s(ASCII);
+	getchar;
 
-	printf("\ningrese el numero que te ha salido decimal:");
-	scanf_s("%i", &numero);
 	numBinario = (char*)calloc(9, sizeof(char));
-	numBinario = convertir(numero);
-	puts(numBinario);
+
+	while (ASCII[i] != '\0') 
+	{
+		numBinario = convertir((int)ASCII[i]);
+		puts(numBinario);
+		i++;
+	}
 
 	free(numBinario);
 }
