@@ -1,36 +1,56 @@
 #include <stdio.h>
-#include <iostream>
-#include <string>
 #include <malloc.h>
+#include <string>
+#include <iostream>
 
+#define OUTLEN 7
 using namespace std;
 string convertir_notas(char notas);
-#define OUTLEN 7
+char convertir_notas(string notasposicion);
 
 int main()
 {
-	char* notas;
-	int numerodelusuario;
-
-	printf("Sea la longitud de la cancíon:");
-	scanf_s("%d",&numerodelusuario);
-	notas = (char*) malloc((sizeof(char)*numerodelusuario)+1);
-	if (notas != NULL)
+	printf("Si quiere pasar de notas a numeros, pulse A.");
+	printf("\n\nSi quiere pasar de numeros a notas,pulse B.\n");
+	char a;
+	scanf_s("%c", &a);
+	switch (a)
 	{
-		printf("Introduce las notas:");
-		
-        getchar();
-		gets_s(notas, numerodelusuario+1); 
+	case 'A': char* notas;
+		int numerodelusuario;
 
-		for (int i = 0; i < numerodelusuario; i++)
+		printf("Sea la longitud de la cancíon:");
+		scanf_s("%d", &numerodelusuario);
+		notas = (char*)malloc((sizeof(char) * numerodelusuario) + 1);
+		if (notas != NULL)
 		{
-			string out = convertir_notas(*(notas + i));
-			cout << out;
-			cout << "\n";
+			printf("Introduce las notas:");
+
+			getchar();
+			gets_s(notas, numerodelusuario + 1);
+
+			for (int i = 0; i < numerodelusuario; i++)
+			{
+				string out = convertir_notas(*(notas + i));
+				cout << out;
+				cout << "\n";
+			}
 		}
+		break;
+	case 'B': string notasposicion;
+		int numerodelusuario2;
+		printf("Sea la longitud de la cancion: ");
+		notasposicion.size();
+		scanf_s("%d", &numerodelusuario2);
+
+		for (int i = 0; i < numerodelusuario2; i++)
+		{
+			printf("\nLas notas son:");
+			cin >> notasposicion;
+			cout << "" << convertir_notas(notasposicion) << endl;
+		}
+
 	}
-
-
 }
 
 string convertir_notas(char notas)
@@ -46,15 +66,15 @@ string convertir_notas(char notas)
 	switch (notas)
 	{
 	case 'D':
-        
+
 		return out1;
 		break;
 	case 'R':
-        
-        return out2;
+
+		return out2;
 		break;
 	case 'M':
-        
+
 		return out3;
 		break;
 	case 'F':
@@ -75,4 +95,48 @@ string convertir_notas(char notas)
 
 
 	}
+}
+
+char convertir_notas(string notasposicion)
+{
+	char nota;
+
+	if (notasposicion == "1000000")
+	{
+		nota = 'D';
+
+	}
+	else if (notasposicion == "0100000")
+
+	{
+		nota = 'R';
+
+	}
+	else if (notasposicion == "00100000")
+	{
+		nota = 'M';
+
+	}
+	else if (notasposicion == "0001000")
+	{
+		nota = 'F';
+
+	}
+	else if (notasposicion == "0000100")
+	{
+		nota = 'S';
+
+	}
+	else if (notasposicion == "0000010")
+	{
+		nota = 'L';
+
+	}
+	else if (notasposicion == "0000001")
+	{
+		nota = 'I';
+
+	}
+	return nota;
+
 }
