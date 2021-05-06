@@ -14,7 +14,8 @@
 */
 
 
-int x=700, y=700;
+int x=700, y=700;//variables a cambiar junto con el size()
+
 int [][]matriz = new int [x][y];
 int i, j, radio=1, d;
 
