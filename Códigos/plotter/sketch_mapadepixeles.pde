@@ -112,7 +112,7 @@ void imatriz() {
 
 
 //Consola:
-//Imprime las coordenadas y el radio del pincel en la consola
+//Imprime las coordenadas y el radio del pincel
 void printlcoord() {
 
   if (mouseX>x) {
