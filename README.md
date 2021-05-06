@@ -14,9 +14,10 @@ Conectar y trasnmitir la información a la placa Arduino desde donde se manejar�
 Controlar el plotter de forma que permita representar lo deseado<br/>
 Crear un lector que pueda transformar un código impreso en el papel en información y trasmitirla al ordenador de vuelta<br/>
 Decodificar la información leída por el lector <br/>
-## WIKI  
-*[Descripción](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Descripci%C3%B3n)*
-- *[Lista de objetivos](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Lista-de-objetivos)*
-- *[Datos de entrada](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Datos-de-entrada)*
-- *[Datos de salida](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Datos-de-salida)*
-- *[Diagramas](https://github.com/aigora/twIA_2021-plotter-lector/wiki/Diagramas)*
+## Documentos   
+(_enlaces a los pdfs_)  
+*[Descripción](https://github.com/aigora/twIA_2021-plotter-lector/blob/master/Pdf/Documento.pdf)*
+- *[Lista de objetivos](https://github.com/aigora/twIA_2021-plotter-lector/blob/master/Pdf/Documento1.pdf)*
+- *[Datos de entrada](https://github.com/aigora/twIA_2021-plotter-lector/blob/master/Pdf/Documento2.pdf)*
+- *[Datos de salida](https://github.com/aigora/twIA_2021-plotter-lector/blob/master/Pdf/Documento3.pdf)*
+- *[Diagramas](https://github.com/aigora/twIA_2021-plotter-lector/blob/master/Pdf/Documento5.pdf)*
