@@ -1,6 +1,7 @@
 # [PLOTTER - LECTOR]
 Se va a crear un plotter para poder imprimir distintos tipos de información y por otro lado un lector que sea capaz de leer la informacion impresa y devolverla a la forma original
-
+## PROGRESO 7 MAYO
+*[PRESENTACION PROGRESO 7 MAYO](https://upm365-my.sharepoint.com/:p:/g/personal/enrique_garcia_torija_alumnos_upm_es/EY1fPgKfuP5Pi-AmMVkfv5ABUf5CDvkL2ckb0-9tb-_h-Q?e=uW6PC5)*
 ## Integrantes del equipo
 Enrique García Torija -@Engarto <br/>
 Diana Perucho Barichevskaia -@Dianaperucho<br/>
