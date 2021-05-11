@@ -2,14 +2,15 @@
 -Click izquierdo: pintar negro.
 -Click derecho: borrar.
 -Rueda arriba: aumentar el tamaño del pinzel.
--Rueda abajo: disminuir el tamaño del pinzel
+-Rueda abajo: disminuir el tamaño del pinzel.
 
--Para cambiar el tamaño de la ventana modificad los valores de las variables "x", "y" junto con los valores de size(a,b) de manera que a=x y b=y.
-  De no hacerlo de esa manera, puede pasar que: 
+Ajustes:
+-Para cambiar el tamaño de la ventana modifica los valores de las variables "x", "y" junto con los valores de size(a,b) de manera que a=x y b=y.
+  De no hacerlo de esta manera, puede pasar que: 
   1. Al introducir un valor en size mayor que en x o y: al guardar la imagen saldrá parte del fondo con un color gris como indica "background(200)" en la función setup.
-  2. Al introducir un valor en size menor que en x o y: se usa más memoria de la necesaria.
+  2. Al introducir un valor en size menor que en x o y: se usará más memoria de la necesaria.
 
--Para cambiar el nombre del archivo de guardado ir a la función keyPressed() e introducir en la variable el nombre y el formato de la siguiente manera: save(" nombre.formato "). 
+-Para cambiar el nombre del archivo de guardado ve a la función keyPressed() e introduce en la variable el nombre y el formato de la siguiente manera: save(" nombre.formato "). 
  Las comillas son necesarias.  
 */
 
