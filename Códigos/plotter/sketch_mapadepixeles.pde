@@ -1,12 +1,12 @@
 /*ATENCIÓN: 
 -Click izquierdo: pintar negro.
--Click izquierdo: borrar.
+-Click derecho: borrar.
 -Rueda arriba: aumentar el tamaño del pinzel.
 -Rueda abajo: disminuir el tamaño del pinzel
 
--Para cambiar el tamaño de la ventana, modificar tanto los valores de las variables "x", "y" junto con los valores de size(a,b) de manera que a=x y b=y.
+-Para cambiar el tamaño de la ventana modificad los valores de las variables "x", "y" junto con los valores de size(a,b) de manera que a=x y b=y.
   De no hacerlo de esa manera, puede pasar que: 
-  1. Al introducir un valor en size mayor que en x o y: al guardar la imagen saldrá parte del fondo con un color gris como indica: background(200) en la función setup.
+  1. Al introducir un valor en size mayor que en x o y: al guardar la imagen saldrá parte del fondo con un color gris como indica "background(200)" en la función setup.
   2. Al introducir un valor en size menor que en x o y: se usa más memoria de la necesaria.
 
 -Para cambiar el nombre del archivo de guardado ir a la función keyPressed() e introducir en la variable el nombre y el formato de la siguiente manera: save(" nombre.formato "). 
@@ -14,7 +14,7 @@
 */
 
 
-int x=700, y=700;//variables a cambiar junto con el size()
+int x=700, y=700;
 
 int [][]matriz = new int [x][y];
 int i, j, radio=1, d;
