@@ -1,44 +1,63 @@
-#include<stdio.h>
-#include<math.h>
-#include<malloc.h>
+#include <stdio.h>
+#include <malloc.h>
+#include <string>
+#include <iostream>
 
-char bin2ascii(char bin[9]);
+using namespace std;
 char* cogerTrozo(char frase[], int inicio, int fin);
+char bin2ascii(char bin[9]);
+char* convertir(int numero);
+void callBinario();
+
 
 int main()
-
 {
-	char num[1000];
-	//int a = 0;
-	int resu = 0;
-	//int dato;
-
-	printf("Introduce una frase formados por 0 o 1:\n");
-
-	gets_s(num);
-	for (int i = 0, k = 8; num[i] != '\0' && num[k] != '\0'; i+= 8, k += 8)
-	{
-		char* trozo = cogerTrozo(num, i, k);
-		resu = bin2ascii(trozo);
-		printf("%c", resu);
-
-	}
-
-	return 0;
+	callBinario();
 }
-
-char bin2ascii(char bin[9]) 
+void callBinario() 
 {
-	int resu = 0, i = 0;
-	while (bin[i] != '\0')
+	printf("Si quiere pasar de binario a texto, pulse A.\n");
+	printf("\n\nSi quiere pasar de texto a binario ,pulse B.\n");
+	char a;
+	scanf_s("%c", &a,1);
+
+	switch (a)
 	{
-		if (bin[i] == '1')
+	case 'A':
+	{
+		char num[1000];
+		int resu = 0;
+		printf("Introduce una frase formados por 0 o 1:\n");
+		getchar();
+		gets_s(num);
+
+		for (int i = 0, k = 8; num[i] != '\0' && num[k] != '\0'; i += 7, k += 7)
 		{
-			resu += pow(2, 7 - i);
+			char* trozo = cogerTrozo(num, i, k);
+			resu = bin2ascii(trozo);
+			printf("%c", resu);
 		}
-		i++;
 	}
-	return resu;
+	break;
+	case 'B':
+		char numero;
+		char* numBinario;
+		char ASCII[2000];
+		int i = 0;
+		printf("Escribe un texto u oracion con el lenguaje Ascii\n");
+		getchar();
+		gets_s(ASCII);
+		numBinario = (char*)calloc(9, sizeof(char));
+
+		while (ASCII[i] != '\0')
+		{
+			numBinario = convertir((int)ASCII[i]);
+			puts(numBinario);
+			i++;
+		}
+		free(numBinario);
+		break;
+	}
 }
 char* cogerTrozo(char frase[], int inicio, int fin)
 {
@@ -55,19 +74,23 @@ char* cogerTrozo(char frase[], int inicio, int fin)
 		return trozo;
 	}
 }
-
-
-
-// De Texto a binario 
-
-#include<stdio.h>
-#include <malloc.h>
-
+char bin2ascii(char bin[9])
+{
+	int resu = 0, i = 0;
+	while (bin[i] != '\0')
+	{
+		if (bin[i] == '1')
+		{
+			resu += pow(2, 6 - i);
+		}
+		i++;
+	}
+	return resu;
+}
 char* convertir(int numero)
 {
 	char* out;
 	int i = 0;
-
 	out = (char*)calloc(9, sizeof(char*));
 	if (out != NULL)
 	{
@@ -76,7 +99,6 @@ char* convertir(int numero)
 		{
 			*(out + i) = '0';
 		}
-
 		//paso de int a binario
 		while (numero > 0)
 		{
@@ -100,28 +122,4 @@ char* convertir(int numero)
 	{
 		printf("No hay memoria suficiente");
 	}
-}
-
-void main()
-{
-	char numero;
-	char* numBinario;
-	char ASCII[2000];
-	int i = 0;
-
-	printf("Escribe un texto u oracion con el lenguaje Ascii\n");
-
-	gets_s(ASCII);
-	getchar;
-
-	numBinario = (char*)calloc(9, sizeof(char));
-
-	while (ASCII[i] != '\0') 
-	{
-		numBinario = convertir((int)ASCII[i]);
-		puts(numBinario);
-		i++;
-	}
-
-	free(numBinario);
 }
