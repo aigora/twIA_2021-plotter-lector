@@ -8,8 +8,13 @@ using namespace std;
 int compare(char a[], char b[]);
 void esp2morse(char l[], char m[][7]);
 void morse2esp(char l[], char m[][7]);
-
+void callMorse();
 int main()
+{
+	callMorse();
+}
+
+void callMorse()
 {
 	char opcion = 0;
 	int i = 0, j = 0, n = 0;
@@ -30,46 +35,27 @@ int main()
 
 	do
 	{
-		printf("\nIndique la longitud de la cadena:");
-		scanf_s("%d", &i);
-		getchar();
+		cout << "\n\nMenu de Opciones" << endl;
+		cout << "a. Espa\xA4ol a morse" << endl;
+		cout << "b. Morse a  espa\xA4ol" << endl;
+		cout << "c. SALIR" << endl;
 
-		cadena = (char*)malloc(sizeof(int) * (i + 1)); //operador para asignar el tamaño exacto
+		cout << "\nIngrese una opcion: ";
+		cin >> opcion;
 
-		if (cadena == NULL)
+		switch (opcion)
 		{
-			printf("No hay memoria disponible");
-			return 0;
-		}
-		else
-		{
-			cout << "\n\nMenu de Opciones" << endl;
-				cout << "a. Espa\xA4ol a morse" << endl;
-				cout << "b. Morse a  espa\xA4ol" << endl;
-				cout << "c. SALIR" << endl;
-
-				if (cadena != NULL);
-			{
-
-				
-				cout << "\nIngrese una opcion: ";
-				cin >> opcion;
-			}
+		case 'a': //español a morse;
+			esp2morse(l, m);
+			break;
+		case 'b'://morse a español
+			morse2esp(l, m);
+			break;
 		}
 
-			switch (opcion)
-			{
-			case 'a': //español a morse;
-				esp2morse(l, m);
-				break;
-			case 'b'://morse a español
-				morse2esp(l, m);
-				break;
-			}
-		} while (opcion != 'c');
-	}
 
-
+	} while (opcion != 'c');
+}
 
 int compare(char a[], char b[])
 {
@@ -89,40 +75,52 @@ int compare(char a[], char b[])
 
 void esp2morse(char l[], char m[][7])
 {
-	char cadena[2000];
-	printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
-	getchar();
-	gets_s(cadena);
-
-
-	for (int i = 0; cadena[i] != '\0'; i++) //inicia desde i hasta la cantidad de dígitos que tenga la cadena
+	char *cadena;
+	int len = 0;
+	printf("\nIndique la longitud de la cadena:");
+	scanf_s("%d", &len);
+	if (len != 0)
 	{
-		for (int j = 0; j < 37; j++) //una vez que el i llegue a 0, pasa al j que inicia hasta llegar al 37 (número de variables posibles en char) 
-			if (cadena[i] == l[j]) //compara la cadena introducida con su correspondiente en traducción
-			{
-				for (int k = 0; m[j][k] != '\0'; k++)
+		cadena = (char*)malloc(sizeof(int) * (len + 1)); //operador para asignar el tamaño exacto
+		printf("Escribe un texto u oracion que quieras traducir a codigo morse:\n");
+		getchar();
+		gets_s(cadena, len + 1);
+
+
+		for (int i = 0; *(cadena + i) != '\0'; i++) //inicia desde i hasta la cantidad de dígitos que tenga la cadena
+		{
+			for (int j = 0; j < 37; j++) //una vez que el i llegue a 0, pasa al j que inicia hasta llegar al 37 (número de variables posibles en char) 
+				if (*(cadena + i) == l[j]) //compara la cadena introducida con su correspondiente en traducción
 				{
-					printf("%c", m[j][k]);
-				}							//una vez que la encuentra, lo imprime
-				printf(" ");
-				break;
-			}
+					for (int k = 0; m[j][k] != '\0'; k++)
+					{
+						printf("%c", m[j][k]);
+					}							//una vez que la encuentra, lo imprime
+					printf(" ");
+					break;
+				}
+		}
 	}
+	
 }
 
 void morse2esp(char l[], char m[][7])
 {
-	char cadena[2000];
 	int i = 0;
+	char *cadena;
+	int len;
+	printf("\nIndique la longitud de la cadena:");
+	scanf_s("%d", &len);
+	cadena = (char*)malloc(sizeof(int) * (len + 1)); //operador para asignar el tamaño exacto
 	printf("Escribe un texto u oracion que quieras traducir a codigo espa\xA4ol:\n");
 	getchar();
-	gets_s(cadena);
+	gets_s(cadena, len + 1 );
 	int distSpacio = 0;
 
-	while (cadena[i] != '\0')
+	while (*(cadena + i) != '\0')
 	{
 		// cuento cuantos caracteres hay entre espacio
-		while (cadena[i + distSpacio] != ' ' && cadena[i + distSpacio] != '\0')
+		while (*(cadena + i + distSpacio) != ' ' && *(cadena + i + distSpacio) != '\0')
 		{
 			// si no es espacio continua incrementando, cogera los simbolos morse que correscponde a 1 letra
 			distSpacio++;
