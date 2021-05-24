@@ -8,8 +8,12 @@ using namespace std;
 string convertir_notas(char notas);
 void notas2char();
 void fileprint(char  data[], const char con[]);
-
+void callNotas();
 int main()
+{
+	callNotas();
+}
+void callNotas()
 {
 	fileprint(NULL, "\n------NUEVA TRADUCCION------\n");
 
@@ -47,7 +51,6 @@ int main()
 		break;
 	}
 }
-
 string convertir_notas(char notas)
 {
 	string out0 = "0000000";
