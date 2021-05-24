@@ -25,11 +25,14 @@ void callBinario()
 	{
 	case 'A':
 	{
-		char num[1000];
-		int resu = 0;
+		char *num ;
+		int resu = 0, len;
+		printf("Introduce la longitud de la frase\n");
+		scanf_s("%d", &len);
+		num = (char*)malloc(7*len + 1);
 		printf("Introduce una frase formados por 0 o 1:\n");
 		getchar();
-		gets_s(num);
+		gets_s(num, 7*len + 1);
 
 		for (int i = 0, k = 8; num[i] != '\0' && num[k] != '\0'; i += 7, k += 7)
 		{
@@ -42,11 +45,14 @@ void callBinario()
 	case 'B':
 		char numero;
 		char* numBinario;
-		char ASCII[2000];
-		int i = 0;
+		char *ASCII;
+		int i = 0,len;
+		printf("Introduce la longitud de la frase\n");
+		scanf_s("%d", &len);
+		ASCII = (char*)malloc(len + 1);
 		printf("Escribe un texto u oracion con el lenguaje Ascii\n");
 		getchar();
-		gets_s(ASCII);
+		gets_s(ASCII, len + 1);
 		numBinario = (char*)calloc(9, sizeof(char));
 
 		while (ASCII[i] != '\0')
